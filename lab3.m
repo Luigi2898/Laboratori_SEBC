@@ -68,8 +68,8 @@ mux.powerf2MHz1Vdd = mux.energy1Vdd*fmax_parall;
 incr.powerf2MHz1Vdd = incr.energy1Vdd*fmax_parall;
 
 area_parall = 5*register.area +2*comp.area + 4*incr.area + 7*mux.area
-power_parall = 5*register.powerf2MHz1Vdd + 2*comp.powerf2MHz1Vdd + ...
-    4*incr.powerf2MHz1Vdd + 7*mux.powerf2MHz1Vdd
+power_parall = 4*register.powerf2MHz1Vdd + register.powerfMHz1Vdd + 2*comp.powerf2MHz1Vdd + ...
+    4*incr.powerf2MHz1Vdd + 2*mux.powerf2MHz1Vdd + 5*mux.powerfMHz1Vdd
 
 tpdmax_parall = tpdmax_norm + mux.delay;
 
@@ -182,7 +182,7 @@ bar([1:7],toplot_pow,.5);
 names = ["Normal" "Pipe1" "Pipe2" "Parallel" "ParallelVDD" "Parallel+Pipe1" "Parallel+Pipe2"];
 set(gca,'xtick',[1:7],'xticklabel',names);
 ylabel("P [\muW]");
-ylim([0 21]);
+ylim([0 28]);
 ax = gca;
 ax.YColor = [0.25, 0.25, 0.25];
 yyaxis right
