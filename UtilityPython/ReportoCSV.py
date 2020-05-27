@@ -9,10 +9,14 @@ def splitBPCT(BusParCapType):
 	T = ""
 	P = ""
 	(B, C, T) = BusParCapType.split("_")
-	for cc in B:
-		if cc.isdigit():
-			P = P + cc
-	B = B.replace(P, "")
+	if "T0" in B:
+		P = B.replace("T0", "")
+		P = P.replace("MOD", "")
+		B = B.replace(P, "")
+	else : 
+		for cc in B:
+			if cc.isdigit():
+				P = P + cc
 	return (B, P, C, T)
 
 nameOutFileNet = open("outNET.csv", "w")
